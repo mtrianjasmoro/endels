@@ -10,7 +10,37 @@ class Klinik extends CI_Controller {
 
 	public function index()
 	{
-		echo "klinik";
+		$data['katagori'] = $this->M_Produk->all_katagori();
+		$data['produk'] = $this->M_Produk->all_produk();	
+		
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar_klinik');
+		$this->load->view('user/klinik',$data);
+		$this->load->view('template/footer');
+	
+	}
+
+	public function payment()
+	{
+		$data['katagori'] = $this->M_Produk->all_katagori();
+		$data['produk'] = $this->M_Produk->all_produk();	
+		
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar_klinik');
+		$this->load->view('user/klinik',$data);
+		$this->load->view('template/footer');
+	
+	}
+
+	public function chat()
+	{
+		$data['katagori'] = $this->M_Produk->all_katagori();
+		$data['produk'] = $this->M_Produk->all_produk();	
+		
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar_klinik');
+		$this->load->view('user/chat',$data);
+		$this->load->view('template/footer');
 	
 	}
 }
