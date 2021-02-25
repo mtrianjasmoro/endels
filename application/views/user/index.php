@@ -1,33 +1,7 @@
-<style>
-
-.column {
-  display: none; 
-}
-
-.pro {
-  color: #8a4411;
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 15px;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-}
-
-.detail{
-	color: #696763;
-}
-.detail:hover{
-	color:#8a4411;
-	font-size: 18px;
-}
-
-</style>
-
-				
 
 				<h2 class="title text-center">Penawaran</h2>
-				<div class="col-sm-9 padding-right">					
+				<div class="col-sm-9 padding-right">	
+				<?= $this->session->flashdata('message'); ?>				
 					<div class="recommended_items"><!--recommended_items-->												
 							<?php for($i=0;$i<=5;$i++){?>
 							<div class="col-sm-2">
@@ -37,7 +11,7 @@
 											<img src="<?= base_url('asset/produk/ex.jpg');?>" alt="" />
 											<h2>$56</h2>
 											<a href="" class="detail" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i> Detail</a>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>keranjang</a>
 										</div>
 										
 									</div>
@@ -72,7 +46,7 @@
 													<img src="<?= base_url('asset/produk/').$pro['foto'];?>" alt="" />
 													<h2>Rp. <?=number_format($pro['harga'],'0','','.');?></h2>
 													<p><?=$pro['nama_produk'];?></p>
-													<a href="<?= base_url('skincare/detail'); ?>" class="detail"><i class="fa fa-info"></i> Detail</a>
+													<a href="#" class="detail" data-toggle="modal" data-target="#detail<?=$pro['id_produk']?>"><i class="fa fa-info"></i> Detail</a>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah keranjang</a>
 												</div>
 												
@@ -89,49 +63,89 @@
 	</section>
 
 <!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="row">
-						<div class="col-md-6">
-							<div id="carousel-inner" class="carousel slide" data-ride="carousel">
-								<!-- Sliding images statring here --> 
-								<div class="carousel-inner"> 
-									<div class="item"> 
-										<img src="<?= base_url('asset/produk/').$pro['foto'];?>" alt="banana"> 
-									</div> 
-									<div class="item"> 
-										<img src="<?= base_url('asset/produk/').$pro['foto'];?>" alt="currant"> 
-									</div> 
-									<div class="item"> 
-										<img src="<?= base_url('asset/produk/').$pro['foto'];?>" alt="mango"> 
-									</div>
-									<div class="item active"> 
-										<img src="<?= base_url('asset/produk/').$pro['foto'];?>" alt="strawberries"> 
-									</div> 
-
+<?php foreach ($produk as $pro) {?>
+	<div class="modal fade" id="detail<?=$pro['id_produk']?>" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
+		<div class="modal-dialog" role="document">
+			<?php 
+				$hidden = array('id_barang' => $pro['id_produk'], 'id_user' => '234');
+				echo form_open('skincare/bayar', 'id="bayar'.$pro['id_produk'].'"', $hidden);				
+			?>
+			<div class="modal-content">
+				<div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Detail Produk</h4>
+			      </div>
+				<div class="row">
+					<div class="col-md-6">
+						<div id="carousel-inner<?=$pro['id_produk']?>" class="carousel slide" data-ride="carousel">
+							<!-- Sliding images statring here --> 
+							<div class="carousel-inner"> 
+								<div class="item"> 
+									<img src="<?= base_url('asset/produk/').$pro['foto'];?>"  alt="1"> 
 								</div> 
-								<!-- Next / Previous controls here -->
-								<a class="left carousel-control" href="#carousel-inner" data-slide="prev">
-								<span class="glyphicon glyphicon-chevron-left"></span>
-								</a>
-								<a class="right carousel-control" href="#carousel-inner" data-slide="next">
-								<span class="glyphicon glyphicon-chevron-right"></span>
-								</a>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<table>
-								<tr>
-									<td>Produk</td>
-									<td>contoh</td>
-								</tr>
-							</table>
+								<div class="item"> 
+									<img src="<?= base_url('asset/produk/').$pro['foto_2'];?>" alt="2"> 
+								</div> 
+								<div class="item"> 
+									<img src="<?= base_url('asset/produk/').$pro['foto_3'];?>" alt="3"> 
+								</div>
+								<div class="item active"> 
+									<img src="<?= base_url('asset/produk/').$pro['foto_4'];?>" alt="4"> 
+								</div> 
+
+							</div> 
+							<!-- Next / Previous controls here -->
+							<a class="left carousel-control" href="#carousel-inner<?=$pro['id_produk']?>" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+							<a class="right carousel-control" href="#carousel-inner<?=$pro['id_produk']?>" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
 						</div>
 					</div>
+					
+					<div class="col-md-6">
+						<table>
+							<tr>
+								<td>Nama</td>
+								<td>: <?=$pro['nama_produk']?></td>
+							</tr>
+							<tr>
+								<td>Harga</td>
+								<td>: Rp. <?=number_format($pro['harga'],'0','','.');?></td>
+							</tr>
+							<tr>
+								<td>Jenis kulit</td>
+								<td>: <?=$pro['nama_katagori']?></td>
+							</tr>
+							<tr>
+								<td>Jumlah</td>
+								<td>: <?=$pro['jumlah']?></td>
+							</tr>
+							<tr>
+								<td colspan="2"><?=$pro['deskripsi']?></td>
+							</tr>
+						</table>
+					</div>
 				</div>
+				<div class="modal-footer">
+		        	<div class="row">
+		        		<div class="col-md-6"><button type="submit" form="bayar<?=$pro['id_produk']?>"  class="btn btn-success-modal col-md-12"><i class="fa fa-dollar"></i> Bayar</button></div>    
+		      			</form>
+		      			<?php 
+							$hiddena = array('id_barang' => $pro['id_produk'], 'id_user' => '234');
+							echo form_open('skincare/tambah_keranjang', 'id="keranjang'.$pro['id_produk'].'"', $hiddena);				
+						?>
+		        		<div class="col-md-6"><button type="submit" form="keranjang<?=$pro['id_produk']?>" name="keranjang" class="btn btn-default-modal col-md-12" ><i class="fa fa-shopping-cart"> </i> Keranjang</button></div>
+		        		</form>
+
+		        	</div>
+		      </div>
 			</div>
 		</div>
+	</div>
+<?php } ?>
+<!-- modal -->
 
 
 <script>

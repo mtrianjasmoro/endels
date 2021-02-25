@@ -44,6 +44,13 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: none;
 }
 
+.img-modal-detail{
+  display: block;
+  height: 190px;
+  width: 275px;
+  line-height: 1;
+}
+
 .navbar-toggle {
   background-color: #000;
 }
@@ -566,7 +573,44 @@ ul.sub-menu {
 /*************************
 ******* Home ******
 **************************/
+.column {
+  display: none; 
+}
 
+.pro {
+  color: #8a4411;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 15px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.detail{
+  color: #696763;
+}
+.detail:hover{
+  color:#8a4411;
+}
+
+.btn-default-modal:hover{
+  color: #fff;
+  background-color: #72380e;
+}
+.btn-default-modal{
+  color: #fff;
+  background-color: #7334139c;
+}
+
+.btn-success-modal:hover{
+  color: #fff;
+  background-color: #ff9300;
+}
+.btn-success-modal{
+  color: #fff;
+  background-color: #ff9300b8;
+}
 
 #slider {
   padding-bottom: 45px;
@@ -581,7 +625,7 @@ ul.sub-menu {
 }
 
 .item {
-  padding-left: 100px;
+  padding-left: 5px;
 }
 
 

@@ -13,6 +13,7 @@ class M_Produk extends CI_Model
 	public function all_produk(){
 		$this->db->select('*');
 		$this->db->from('produk');
+		$this->db->join('katagori','katagori.id_katagori=produk.id_katagori');
 		$query = $this->db->get();
 		return $query->result_array();
 	}

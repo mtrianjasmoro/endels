@@ -25,6 +25,22 @@ class Skincare extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function tambah_keranjang(){
+		$id_barang = $this->input->post('id_barang');
+		$id_user = 1;
+		$data=array(
+				"id_produk"=>$id_barang,
+				"id_user"=>$id_user
+			);
+			$this->db->insert('keranjang',$data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Berhasil ditambah dikeranjang</div>');
+			redirect('Skincare');
+	}
+
+	public function bayar(){
+		echo "bayar".$this->input->post('id_barang');
+	}
+
 	public function detail(){
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar');

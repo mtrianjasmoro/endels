@@ -9,7 +9,6 @@
     <link href="<?= base_url('asset/'); ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('asset/'); ?>css/font-awesome.min.css" rel="stylesheet">
     <link href="<?= base_url('asset/'); ?>css/prettyPhoto.css" rel="stylesheet">
-    <link href="<?= base_url('asset/'); ?>css/price-range.css" rel="stylesheet">
     <link href="<?= base_url('asset/'); ?>css/animate.css" rel="stylesheet">
 	<link href="<?= base_url('asset/'); ?>css/main.css" rel="stylesheet">
 	<link href="<?= base_url('asset/'); ?>css/responsive.css" rel="stylesheet">
@@ -41,7 +40,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Rekomendasi</a></li>
 								<li><a href="#"><i class="fa fa-user"></i> Akun</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Pembayaran</a></li>
+								<li><a href="checkout.html"><i class="fa fa-dollar"></i> Pembayaran</a></li>
 								<li><a href="<?= base_url('skincare/keranjang'); ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Masuk</a></li>
 							</ul>
