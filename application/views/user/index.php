@@ -3,15 +3,19 @@
 				<div class="col-sm-9 padding-right">	
 				<?= $this->session->flashdata('message'); ?>				
 					<div class="recommended_items"><!--recommended_items-->												
-							<?php for($i=0;$i<=5;$i++){?>
+							<?php foreach ($rekomen as $rek) {?>
 							<div class="col-sm-2">
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="<?= base_url('asset/produk/ex.jpg');?>" alt="" />
-											<h2>$56</h2>
-											<a href="" class="detail" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info"></i> Detail</a>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>keranjang</a>
+											<img src="<?= base_url('asset/produk/').$rek['foto'];?>" alt="" />
+											<p>Rp. <?=number_format($rek['harga'],'0','','.');?></p>
+											<a href="#" class="detail" data-toggle="modal" data-target="#detail<?=$rek['id_produk']?>"><i class="fa fa-info"></i> Detail</a>
+													<?php 
+														$hiddena = array('id_barang' => $rek['id_produk'], 'id_user' => '234');
+														echo form_open('skincare/tambah_keranjang', 'id="keranjang'.$rek['id_produk'].'"', $hiddena);				
+													?>
+											<button type="submit" form="keranjang<?=$rek['id_produk']?>" name="keranjang" class="btn btn-default-modal col-md-12" ><i class="fa fa-shopping-cart"> </i> Keranjang</button>
 										</div>
 										
 									</div>
@@ -33,6 +37,16 @@
 									<?php } ?>
 								</ul>
 							</div>
+							<form action="/action_page.php" >
+			                <div class="input-group col-sm-3 pull-right">
+			                  <input type="text" class="form-control" placeholder="Cari" name="search">
+			                  <div class="input-group-btn">
+			                    <button class="btn btn-default" type="submit">
+			                      <i class="glyphicon glyphicon-search"></i>
+			                    </button>
+			                  </div>
+			                </div>
+			              </form>
 						</div>
 					<h2 class="pro text-center" id="p_judul"></h2>
 
@@ -47,7 +61,12 @@
 													<h2>Rp. <?=number_format($pro['harga'],'0','','.');?></h2>
 													<p><?=$pro['nama_produk'];?></p>
 													<a href="#" class="detail" data-toggle="modal" data-target="#detail<?=$pro['id_produk']?>"><i class="fa fa-info"></i> Detail</a>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Tambah keranjang</a>
+													<?php 
+														$hiddena = array('id_barang' => $pro['id_produk'], 'id_user' => '234');
+														echo form_open('skincare/tambah_keranjang', 'id="keranjang'.$pro['id_produk'].'"', $hiddena);				
+													?>
+													<button type="submit" form="keranjang<?=$pro['id_produk']?>" name="keranjang" class="btn btn-default-modal col-md-12" ><i class="fa fa-shopping-cart"> </i> Keranjang</button>
+													</form>
 												</div>
 												
 											</div>
@@ -67,8 +86,8 @@
 	<div class="modal fade" id="detail<?=$pro['id_produk']?>" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
 		<div class="modal-dialog" role="document">
 			<?php 
-				$hidden = array('id_barang' => $pro['id_produk'], 'id_user' => '234');
-				echo form_open('skincare/bayar', 'id="bayar'.$pro['id_produk'].'"', $hidden);				
+				$hidden = array('id_barang' => $pro['id_produk']);
+				echo form_open('skincare/bayar', 'id="m_bayar'.$pro['id_produk'].'"', $hidden);				
 			?>
 			<div class="modal-content">
 				<div class="modal-header">
@@ -130,13 +149,13 @@
 				</div>
 				<div class="modal-footer">
 		        	<div class="row">
-		        		<div class="col-md-6"><button type="submit" form="bayar<?=$pro['id_produk']?>"  class="btn btn-success-modal col-md-12"><i class="fa fa-dollar"></i> Bayar</button></div>    
+		        		<div class="col-md-6"><button type="submit" form="m_bayar<?=$pro['id_produk']?>"  class="btn btn-success-modal col-md-12"><i class="fa fa-dollar"></i> Bayar</button></div>    
 		      			</form>
 		      			<?php 
 							$hiddena = array('id_barang' => $pro['id_produk'], 'id_user' => '234');
-							echo form_open('skincare/tambah_keranjang', 'id="keranjang'.$pro['id_produk'].'"', $hiddena);				
+							echo form_open('skincare/tambah_keranjang', 'id="m_keranjang'.$pro['id_produk'].'"', $hiddena);				
 						?>
-		        		<div class="col-md-6"><button type="submit" form="keranjang<?=$pro['id_produk']?>" name="keranjang" class="btn btn-default-modal col-md-12" ><i class="fa fa-shopping-cart"> </i> Keranjang</button></div>
+		        		<div class="col-md-6"><button type="submit" form="m_keranjang<?=$pro['id_produk']?>" name="keranjang" class="btn btn-default-modal col-md-12" ><i class="fa fa-shopping-cart"> </i> Keranjang</button></div>
 		        		</form>
 
 		        	</div>
@@ -190,7 +209,7 @@ for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){
     var current = document.getElementsByClassName("active");
     current[i].className = current[i].className.replace(" active", "");
-    this.className += " active";
+    // this.className += " active";
   });
 }
 </script>					

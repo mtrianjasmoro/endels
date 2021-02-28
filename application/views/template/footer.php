@@ -18,6 +18,7 @@
 
   
     <script src="<?= base_url('asset/'); ?>js/jquery.js"></script>
+    
 	<script src="<?= base_url('asset/'); ?>js/bootstrap.min.js"></script>
 	<script src="<?= base_url('asset/'); ?>js/jquery.scrollUp.min.js"></script>
     <script src="<?= base_url('asset/'); ?>js/jquery.prettyPhoto.js"></script>
