@@ -18,12 +18,14 @@
 				<?php 
 				$i=0;
 				foreach ($bayar as $buy) {
-					$i++;
-					$hidden = array('id_barang' => $buy['id_produk']);
-					echo form_open('skincare/bayar', 'id="m_bayar'.$buy['id_produk'].'"', $hidden);				
+					$i++;		
 					?>
+					<?php
+					echo form_open('skincare/bayar', 'id="m_bayar'.$buy['id_produk'].'"');	 ?>
+					 <input type="hidden"name="id_barang" value="<?=$buy['id_produk']?>" form="m_bayar<?=$buy['id_produk']?>">
+					 <input type="hidden"name="id_keranjang" value="<?=$buy['id_keranjang']?>" form="m_bayar<?=$buy['id_produk']?>">
 					<tr>
-						<th scope="row" class="text-center"><?=$i?></th>
+						<td scope="row" class="text-center"><?=$i?></th>
 						<td><img src="<?=base_url('asset/produk/').$buy['foto']?>" width="10%"></td>
 						<td><?=$buy['nama_produk']?></td>
 						<td>Rp. <?=number_format($buy['harga'],'0','','.');?></td>

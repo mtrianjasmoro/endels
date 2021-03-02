@@ -36,8 +36,15 @@
       <div class="panel-heading text-center">Pembayaran dan pengiriman</div>
       <div class="panel-body">
         <?php 
-        $hiddena = array('id_barang' => $toko['id_produk'], 'id_user' => $pembeli['id_user'],'alamat' => $pembeli['alamat'],'rt' => $pembeli['rt'],'rw' => $pembeli['rw'],'kelurahan' => $pembeli['kelurahan'],'kecamatan' => $pembeli['kecamatan']);
-        echo form_open('skincare/beli', 'id=f_bayar', $hiddena);       
+        $hiddena = array('id_barang' => $toko['id_produk'], 
+          'id_user' => $pembeli['id_user'],
+          'alamat' => $pembeli['alamat'],
+          'rt' => $pembeli['rt'],
+          'rw' => $pembeli['rw'],
+          'kelurahan' => $pembeli['kelurahan'],
+          'id_transaksi' => $keranjang['id'],
+          'kecamatan' => $pembeli['kecamatan']);
+        echo form_open('skincare/beli', 'id=f_bayar',$hiddena);       
         ?>
         <table style="width: 100%">
           <tr>
@@ -114,7 +121,6 @@
 
   // tamapil hasil kota&kabupaten dari raja ongkir
   getKota1();
-  getKota2();
 
   // pilih jenis pengiriman->hitung total harga (harga barang*jumlah barang+ ongkir)->enable tombol bayar
   $("#jenis_pengiriman").on("change", function(e){
@@ -176,19 +182,23 @@
 
     });
 
+    getKota2();
+
   }
 
   // merubah data mysql kab&provinsi dari angka ke huruf untuk pembeli
   // tampil data->hideen loading jika semua data siap
   function getKota2() {
+    var prov = <?=$pembeli['provinsi']?>;
+    var kot = <?=$pembeli['kabupaten']?>;
     var row = document.getElementById("beli"); 
     var x = row.insertCell(0);
     var y = row.insertCell(1);
 
-    $.getJSON("../ongkir/kota/"+11, function(data){      
+    $.getJSON("../ongkir/kota/"+prov, function(data){ 
+      console.log(prov);     
       $.each(data, function(i,field){  
-
-        if (field.city_id == 256) {
+        if (field.city_id == kot) {
           console.log(field.city_name);
           console.log(field.province); 
           x.innerHTML = "Kabupaten/Kota: "+field.city_name;
@@ -196,6 +206,8 @@
           document.getElementById("hid_prov").innerHTML = "<input type='hidden' name='kabupaten' value='"+field.city_name+"'><input type='hidden' name='provinsi' value='"+field.province+"'>";
           $("#buy").show();
           $("#loading").hide();
+        }else{
+          console.log(field.city_id+"=="+kot);
         }       
 
       });
@@ -218,14 +230,14 @@
 
           for (j in field.costs[i].cost) {
 
-                $op.append('<option value="'+field.costs[i].cost[j].value+'">'+field.costs[i].service+'( Rp. '+(field.costs[i].cost[j].value/1000).toFixed(3)+' Sampai '+field.costs[i].cost[j].etd+' hari)'+'</option>');
-              }
+            $op.append('<option value="'+field.costs[i].cost[j].value+'">'+field.costs[i].service+'( Rp. '+(field.costs[i].cost[j].value/1000).toFixed(3)+' Sampai '+field.costs[i].cost[j].etd+' hari)'+'</option>');
+          }
 
-            }
-            document.getElementById("jenis_pengiriman").disabled = false;
-            $("#loadermini").hide();
+        }
+        document.getElementById("jenis_pengiriman").disabled = false;
+        $("#loadermini").hide();
 
-          });
+      });
     });
 
   }

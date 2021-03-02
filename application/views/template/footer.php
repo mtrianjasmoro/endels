@@ -22,6 +22,6 @@
 	<script src="<?= base_url('asset/'); ?>js/bootstrap.min.js"></script>
 	<script src="<?= base_url('asset/'); ?>js/jquery.scrollUp.min.js"></script>
     <script src="<?= base_url('asset/'); ?>js/jquery.prettyPhoto.js"></script>
-    <script src="<?= base_url('asset/'); ?>js/main.js"></script>
+    <!-- <script src="<?= base_url('asset/'); ?>js/main.js"></script> -->
 </body>
 </html>

@@ -20,6 +20,12 @@ class M_Produk extends CI_Model
 		return $query->result_array();
 	}
 
+	public function mua($tgl){
+		$sql="SELECT * FROM mua WHERE id_mua NOT IN (SELECT mua_booking.id_mua FROM mua_booking WHERE mua_booking.tgl_booking='$tgl')";    
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
 	// tampil produk yang ditawarkan
 	public function penawaran(){
 		$this->db->select('*');

@@ -46,9 +46,11 @@ class Skincare extends CI_Controller {
 	// form pembelian
 	public function bayar(){
 		$id_barang = $this->input->post('id_barang');
+		$id_keranjang  = $this->input->post('id_keranjang');
 		$id_user = 1;
 		$data['toko'] = $this->M_Produk->toko_produk($id_barang);
 		$data['pembeli'] = $this->M_Produk->pembeli($id_user);
+		$data['keranjang'] = array('id' => $id_keranjang);
 
 		$this->load->view('template/header');
 		$this->load->view('user/bayar',$data);
@@ -83,7 +85,7 @@ class Skincare extends CI_Controller {
 		$kecamatan = $this->input->post('kecamatan');
 		$kabupaten = $this->input->post('kabupaten');
 		$provinsi = $this->input->post('provinsi');
-
+		$id_transaksi = $this->input->post('id_transaksi');
 		
 		$data = [
 			'id_produk' => $id_barang,
@@ -102,6 +104,7 @@ class Skincare extends CI_Controller {
 			'kabupaten' => $kabupaten,
 			'provinsi' => $provinsi
 		];
+		$this->db->delete('keranjang', array('id_keranjang' => $id_transaksi));
 		$this->db->insert('beli', $data);
 		redirect('skincare/transaksi');
 	}

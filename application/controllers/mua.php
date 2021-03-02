@@ -8,17 +8,18 @@ class Mua extends CI_Controller {
         $this->load->model('M_Produk', '', TRUE);
     }
 
-	public function index()
+	public function index($tgl="")
 	{
+		$tgl=$this->input->post('tgl_booking');
 		$data['katagori'] = $this->M_Produk->all_katagori();
-		$data['produk'] = $this->M_Produk->all_toko_produk(1);
+		$data['mua'] = $this->M_Produk->mua($tgl);
+		$data['rekomen'] = $this->M_Produk->penawaran();
 		$data['toko'] = $this->M_Produk->toko();
-		$this->session->set_flashdata('nama', $this->uri->segment('4'));	
 		 
 		
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar',$data);
-		$this->load->view('user/toko',$data);
+		$this->load->view('user/mua',$data);
 		$this->load->view('template/footer');
 	
 	}
