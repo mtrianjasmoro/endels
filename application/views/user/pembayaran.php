@@ -1,6 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading text-center">Status Pembayaran</div>
-	<div class="panel-body">		
+	<div class="panel-body">	
+	<?= $this->session->flashdata('message'); ?>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -11,7 +12,6 @@
 					<th>Dateline bayar</th>
 					<th>Upload bukti</th>
 					<th>Status</th>
-					<th>Keterangan</th>
 				</tr>
 			</thead>
 
@@ -35,7 +35,10 @@
 						<td>Rp. <?=number_format($tran['total_harga'],'0','','.');?></td>
 						<td><?=$tran['tgl_dateline']?></td>
 						<td>
-						<?php echo form_open_multipart('skincare/upload_bayar','id="form'.$i.'"');?>
+						<?php
+							$hidden = array('id_tran' => $tran['id_beli']);  
+							echo form_open_multipart('skincare/upload_bayar','id="form'.$i.'"',$hidden);
+						?>
 							<div class="input-group">
 								<input type="file" class="form-control c" <?=$tampil;?> id="image" name="image">
 								<span class="input-group-btn">
@@ -55,7 +58,6 @@
 								echo '<mark class="belum">Gagal</mark>';
 							}?>
 						</td> 
-						<td><?=$tran['keterangan']?></td>
 					</tr>
 				<?php } ?>
 

@@ -194,8 +194,8 @@
           x.innerHTML = "Kabupaten/Kota: "+field.city_name;
           y.innerHTML = "Provinsi: "+field.province;
           document.getElementById("hid_prov").innerHTML = "<input type='hidden' name='kabupaten' value='"+field.city_name+"'><input type='hidden' name='provinsi' value='"+field.province+"'>";
-    $("#buy").show();
-    $("#loading").hide();
+          $("#buy").show();
+          $("#loading").hide();
         }       
 
       });

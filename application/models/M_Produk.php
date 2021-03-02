@@ -38,6 +38,25 @@ class M_Produk extends CI_Model
 		return $query->result_array();
 	}
 
+	public function all_toko_produk($id){
+		$this->db->select('*');
+		$this->db->from('produk');		
+		$this->db->join('katagori','katagori.id_katagori=produk.id_katagori');
+		$this->db->where('id_toko',$id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function rekomendasi($id){
+		$this->db->select('*');
+		$this->db->from('rekomendasi');		
+		$this->db->join('produk','produk.id_produk=rekomendasi.id_produk');
+		$this->db->join('katagori','katagori.id_katagori=produk.id_katagori');
+		$this->db->where('id_user',$id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	// tampil produk dan toko berdasarkan id_produk
 	public function toko_produk($id){
 		$this->db->select('*');
@@ -63,6 +82,22 @@ class M_Produk extends CI_Model
 		$this->db->from('beli');
 		$this->db->join('produk','produk.id_produk=beli.id_produk');
 		$this->db->where('id_user',$id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function keranjang($id){
+		$this->db->select('*');
+		$this->db->from('keranjang');
+		$this->db->where('id_user',$id);
+		$this->db->join('produk','produk.id_produk=keranjang.id_produk');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function toko(){
+		$this->db->select('*');
+		$this->db->from('toko');
 		$query = $this->db->get();
 		return $query->result_array();
 	}

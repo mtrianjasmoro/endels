@@ -1,96 +1,38 @@
-	<section id="cart_items">
-		<div class="container">
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+<div class="panel panel-default">
+	<div class="panel-heading text-center">Keranjang</div>
+	<div class="panel-body">	
+		<?= $this->session->flashdata('message'); ?>
+		<table class="table table-hover text-center">
+			<thead>
+				<tr>
+					<th class="text-center">No</th>
+					<th class="text-center">Foto</th>	
+					<th class="text-center">Produk</th>
+					<th class="text-center">Harga</th>
+					<th class="text-center">Stok</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>
 
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</section> <!--/#cart_items-->
+			<tbody>
+				<?php 
+				$i=0;
+				foreach ($bayar as $buy) {
+					$i++;
+					$hidden = array('id_barang' => $buy['id_produk']);
+					echo form_open('skincare/bayar', 'id="m_bayar'.$buy['id_produk'].'"', $hidden);				
+					?>
+					<tr>
+						<th scope="row" class="text-center"><?=$i?></th>
+						<td><img src="<?=base_url('asset/produk/').$buy['foto']?>" width="10%"></td>
+						<td><?=$buy['nama_produk']?></td>
+						<td>Rp. <?=number_format($buy['harga'],'0','','.');?></td>
+						<td><?=$buy['jumlah']?></td>
+						<td><button type="submit" form="m_bayar<?=$buy['id_produk']?>"  class="btn btn-success-modal col-md-12"><i class="fa fa-dollar"></i> Bayar</button></td>
+					</tr>
+				</form>
+			<?php }?>
+		</tbody>
+	</table>
+</div>
+</div>

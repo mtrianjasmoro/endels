@@ -30,7 +30,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Rekomendasi</a></li>
+								<li><a href="<?= base_url('skincare/rekomendasi'); ?>"><i class="fa fa-user"></i> Rekomendasi</a></li>
 								<li><a href="#"><i class="fa fa-user"></i> Akun</a></li>
 								<li><a href="<?= base_url('skincare/transaksi'); ?>"><i class="fa fa-dollar"></i> Pembayaran</a></li>
 								<li><a href="<?= base_url('skincare/keranjang'); ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li>
