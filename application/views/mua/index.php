@@ -7,9 +7,12 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="<?= base_url('asset/'); ?>css/toko.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
   <title>Hello, world!</title>
 
@@ -28,10 +31,10 @@
             <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Produk</a>
+            <a class="nav-link" href="#">Galery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Penjualan</a>
+            <a class="nav-link" href="#">Jadwal</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Saldo</a>
@@ -57,15 +60,17 @@
   </nav>
   <!-- end navbar -->
 
+
+
   <!-- isi -->
-    <?php include"saldo.php";?>
+     <?php include"orderan.php";?> 
   <!-- end isi -->
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-
+</iframe>
 </body>
 </html>
