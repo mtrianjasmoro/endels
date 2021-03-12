@@ -28,27 +28,27 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?= base_url('muach/'); ?>">Dashboard <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Galery</a>
+            <a class="nav-link" href="<?= base_url('muach/galery'); ?>">Galery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Jadwal</a>
+            <a class="nav-link" href="<?= base_url('muach/jadwal'); ?>">Jadwal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Saldo</a>
+            <a class="nav-link" href="<?= base_url('muach/saldo'); ?>">Saldo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Orderan</a>
+            <a class="nav-link" href="<?= base_url('muach/orderan'); ?>">Orderan</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="<?= base_url('asset/'); ?>logo_toko/1.png" alt="logo" width="25" height="25" class="d-inline-block align-top rounded-circle" >Profile
+              <img src="<?= base_url('asset/'); ?>logo_mua/1.png" alt="logo" width="25" height="25" class="d-inline-block align-top rounded-circle" >Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Ubah profil</a>
-              <a class="dropdown-item" href="#">Pengaturan</a>
+              <a class="dropdown-item" href="<?= base_url('muach/ubah_profile'); ?>">Ubah profil</a>
+              <a class="dropdown-item" href="<?= base_url('muach/pengaturan'); ?>">Pengaturan</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Keluar</a>
             </div>
@@ -59,18 +59,3 @@
     </div>
   </nav>
   <!-- end navbar -->
-
-
-
-  <!-- isi -->
-     <?php include"orderan.php";?> 
-  <!-- end isi -->
-
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-</iframe>
-</body>
-</html>

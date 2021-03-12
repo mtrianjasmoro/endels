@@ -87,7 +87,7 @@
 				{
 					id: <?=$ev['id_booking']?>,
 					title: '<?=$ev['nama_user']?>',
-					start: '<?=$ev['tgl_booking']?>',
+					start: '<?=$ev['tgl_H']?>',
 					end: '<?=date('Y-m-d', strtotime('+1 days', strtotime($ev['tgl_booking'])))?>',
 					color: '#3e1415',
 					nomor: '<?=$ev['nomor']?>',
