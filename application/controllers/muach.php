@@ -43,8 +43,13 @@ class Muach extends CI_Controller {
 
 	public function saldo()
 	{
+		$id=1;
+		$data['pendapatan']=$this->M_Acara->pendapatan($id);		
+		$data['pendapatan_detail']=$this->M_Acara->pendapatan_detail($id);
+		$data['penarikan']=$this->M_Acara->penarikan($id);
+		$data['penarikan_detail']=$this->M_Acara->penarikan_detail($id);
 		$this->load->view('template/mua_header');
-		$this->load->view('mua/saldo');
+		$this->load->view('mua/saldo',$data);
 		$this->load->view('template/mua_footer');	
 	}
 
