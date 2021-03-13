@@ -147,6 +147,45 @@ class Muach extends CI_Controller {
 		$this->load->view('template/mua_footer');	
 	}
 
+	public function ubah_password($perintah="")
+	{
+		// password id 1 = mua
+		$id=1;
+		$data['mua'] = $this->db->get_where('mua', ['id_mua' => $id])->row_array();
+
+		if (!$perintah) {
+			$this->load->view('template/mua_header');
+			$this->load->view('mua/password');
+			$this->load->view('template/mua_footer');	
+		} else {
+			$this->form_validation->set_rules('pass', 'Current Password', 'required|trim');
+			$this->form_validation->set_rules('password1', 'New password', 'required|trim|min_length[3]|matches[password2]');
+			$this->form_validation->set_rules('password2', 'Repeat Password', 'required|trim|min_length[3]|matches[password1]');
+			if ($this->form_validation->run() == false) {
+				$this->load->view('template/mua_header');
+				$this->load->view('mua/password');
+				$this->load->view('template/mua_footer');	
+			} else {
+				$pass=$this->input->post('pass');
+				$password=$this->input->post('password1');
+				if (!password_verify($pass, $data['mua']['password'])) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Salah password lama</div>');
+					redirect('muach/ubah_password');
+				} else {
+					$password_hash = password_hash($password, PASSWORD_DEFAULT);
+					$this->db->set('password', $password_hash);
+					$this->db->where('id_mua', $id);
+					$this->db->update('mua');
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil rubah password</div>');
+					redirect('muach/ubah_password');
+				}
+
+			}
+			
+		}
+		
+	}
+
 	public function action_orderan($id,$action=""){
 		if ($action == '1') {
 			$this->db->where('id_booking', $id);

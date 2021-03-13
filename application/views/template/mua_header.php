@@ -14,7 +14,7 @@
 
 
 
-  <title>Hello, world!</title>
+  <title>MUA</title>
 
 </head>
 <body>
@@ -48,6 +48,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?= base_url('muach/ubah_profile'); ?>">Ubah profil</a>
+              <a class="dropdown-item" href="<?= base_url('muach/ubah_password'); ?>">Ubah password</a>
               <a class="dropdown-item" href="<?= base_url('muach/pengaturan'); ?>">Pengaturan</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Keluar</a>
