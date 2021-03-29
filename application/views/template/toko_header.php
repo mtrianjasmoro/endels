@@ -30,16 +30,16 @@
             <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Produk</a>
+            <a class="nav-link" href="<?= base_url('toko/produk');?>">Produk</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Penjualan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Saldo</a>
+            <a class="nav-link" href="<?= base_url('toko/transaksi');?>">Saldo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Orderan</a>
+            <a class="nav-link" href="<?= base_url('toko/orderan');?>">Orderan</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,19 +58,3 @@
 
     </div>
   </nav>
-  <!-- end navbar -->
-
-  <!-- isi -->
-    <?php include"saldo.php";?>
-  <!-- end isi -->
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-  <!-- js table -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-</body>
-</html>

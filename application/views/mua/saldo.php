@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+
 <script>
 	$(document).ready(function(){
 		$('#example').DataTable();
